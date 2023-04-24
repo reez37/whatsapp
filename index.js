@@ -10,10 +10,10 @@ let msg = "hello"
 const token = process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;
 
-// const configuration = new Configuration({
-//     apiKey: "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",
-// });
-// const openai = new OpenAIApi(configuration);
+const configuration = new Configuration({
+    apiKey: "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",
+});
+const openai = new OpenAIApi(configuration);
 
 
 
@@ -41,19 +41,19 @@ app.get("/webhook",(req,res)=>{
 });
 
 //httppost openai
-// async function api(){
-//     const completion = await openai.createChatCompletion({
-//         model: "gpt-3.5-turbo",
-//         messages: [{role:"system",content:"you are a politician from India, representing the Indian National Congress Party and standing as a candidate for the MLA post in the upcoming Karnataka election for the first time and people are asking you a question as a part of campaign your job is to answer and convince them to vote for you.reply them in short as possible"},
-//             {role: "user", content: msg}
-//         ]
-//       });
-//       response = completion.data.choices[0].message.content;
-//       console.log(response)
+async function api(){
+    const completion = await openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: [{role:"system",content:"you are a politician from India, representing the Indian National Congress Party and standing as a candidate for the MLA post in the upcoming Karnataka election for the first time and people are asking you a question as a part of campaign your job is to answer and convince them to vote for you.reply them in short as possible"},
+            {role: "user", content: msg}
+        ]
+      });
+      response = completion.data.choices[0].message.content;
+      console.log(response)
 
       
 
-// }
+ }
 
 
 
@@ -70,7 +70,7 @@ app.post("/webhook",(req,res) =>{
                 console.log(phone_no_id)
                 console.log(from)
                 console.log(msg_body)
-             
+                api()
                 axios({
                     method:"POST",
                     url:"https://graph.facebook.com/v16.0/"+phone_no_id+"/messages?access_token="+token,
@@ -81,7 +81,7 @@ app.post("/webhook",(req,res) =>{
                         "type": "text",
                         "text": {
                             "preview_url": false,
-                            "body": "hi im rezz"
+                            "body": response
                         },
                         headers:{
                             "Content-Type":"application/json"

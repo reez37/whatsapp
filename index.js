@@ -10,7 +10,7 @@ let msg = "hello"
 const token = process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;
 const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 

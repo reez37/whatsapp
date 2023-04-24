@@ -99,6 +99,7 @@ async function api(){
 
 
 
+
 app.get("/",(req,res)=>{
-    res.status(200).send("hello nigga")
+    res.status(200).send(response+"=res")
 })

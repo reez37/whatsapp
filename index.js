@@ -41,22 +41,22 @@ app.listen(8800 || process.env.PORT,()=>{
 // });
 
 //httppost openai
-async function api(){
+async function api(msg){
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [{role:"system",content:"you are a politician from India, representing the Indian National Congress Party and standing as a candidate for the MLA post in the upcoming Karnataka election for the first time and people are asking you a question as a part of campaign your job is to answer and convince them to vote for you.reply them in short as possible"},
-            {role: "user", content: "hello"}
+            {role: "user", content: msg}
         ]
       });
-      response = completion.data.choices[0].message.content;
-      console.log(response)
+      return completion.data.choices[0].message.content;
+      
 
       
 
  }
 
 
- api()
+ 
 
 // //httppost whatsapp
 // app.post("/webhook",(req,res) =>{
@@ -99,7 +99,14 @@ async function api(){
 
 
 
+app.get("/", async (req, res) => {
+    response = await api(msg);
+    res.status(200).send(response + "=res");
+});
 
-app.get("/",(req,res)=>{
-    res.status(200).send(response+"=res")
-})
+
+// app.post("/message", async (req, res) => {
+//     const msg = req.body.message;
+//     const response = await generateResponse(msg);
+//     res.send({ response });
+//   });

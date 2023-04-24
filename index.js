@@ -73,7 +73,7 @@ app.post("/webhook",async (req,res) =>{
                 console.log(from)
                 console.log(msg_body)
                 msg = req.body.message;
-                const response = await generateResponse(msg);
+                const response = await api(msg);
                 
                
                 axios({

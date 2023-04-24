@@ -31,6 +31,7 @@ app.get("/webhook",(req,res)=>{
     if(mode && token){
         if(mode === "subscribe" && tokens === mytoken){
             res.status(200).send(challenge);
+            console.log("reez is on")
         }else{
             res.status(400)
         }

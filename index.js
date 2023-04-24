@@ -72,8 +72,8 @@ app.post("/webhook",async (req,res) =>{
                 console.log(phone_no_id)
                 console.log(from)
                 console.log(msg_body)
-                msg = req.body.message;
-                const response = await api(msg);
+                
+                const response = await api(msg_body);
                 
                
                 axios({

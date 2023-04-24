@@ -9,6 +9,7 @@ let response =""
 let msg = "hello"
 const token = process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;
+const tokens = "reezmg"
 // const configuration = new Configuration({
 //     apiKey: "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",
 // });
@@ -28,7 +29,7 @@ app.get("/webhook",(req,res)=>{
     
 
     if(mode && token){
-        if(mode === "subscribe" && token === mytoken){
+        if(mode === "subscribe" && tokens === mytoken){
             res.status(200).send(challenge);
         }else{
             res.status(400)

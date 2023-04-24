@@ -9,7 +9,7 @@ let response =""
 let msg = "hello"
 const token = process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;
-const tokens = "reezmg"
+
 // const configuration = new Configuration({
 //     apiKey: "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",
 // });
@@ -24,7 +24,7 @@ app.listen(8000 || process.env.PORT,()=>{
 app.get("/webhook",(req,res)=>{
     let mode = req.query["hub.mode"];
     let challenge = req.query["hub.challenge"];
-    let token = req.query["hub.verify_token"];
+    let tokens = req.query["hub.verify_token"];
 
     
 

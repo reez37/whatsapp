@@ -5,7 +5,7 @@ const { Configuration, OpenAIApi } = require("openai");
 require('dotenv').config();
 const app = express().use(body_parser.json());
 
-let response =""
+let response ="hello reez"
 let msg = "hello"
 const token = process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;
@@ -68,7 +68,7 @@ app.post("/webhook",(req,res) =>{
                 let from = body_param.entry[0].changes[0].value.messages[0].from;
                 msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
                 msg = msg_body;
-       
+                api()
                 axios({
                     method:"POST",
                     url:"https://graph.facebook.com/v16.0/"+phone_no_id+"/messages?access_token="+token,
@@ -91,4 +91,12 @@ app.post("/webhook",(req,res) =>{
                 res.sendStatus(404);
             }
     }
+})
+
+
+
+
+
+app.get("/",(req,res)=>{
+    res.status(200).send("hello nigga")
 })

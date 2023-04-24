@@ -71,23 +71,23 @@ app.post("/webhook",(req,res) =>{
                 console.log(from)
                 console.log(msg_body)
              
-                // axios({
-                //     method:"POST",
-                //     url:"https://graph.facebook.com/v16.0/"+phone_no_id+"/messages?access_token="+token,
-                //     data:{
-                //         "messaging_product": "whatsapp",    
-                //         "recipient_type": "individual",
-                //         "to": from,
-                //         "type": "text",
-                //         "text": {
-                //             "preview_url": false,
-                //             "body": "hi im rezz"
-                //         },
-                //         headers:{
-                //             "Content-Type":"application/json"
-                //         }
-                //     }
-                // });
+                axios({
+                    method:"POST",
+                    url:"https://graph.facebook.com/v16.0/"+phone_no_id+"/messages?access_token="+token,
+                    data:{
+                        "messaging_product": "whatsapp",    
+                        "recipient_type": "individual",
+                        "to": from,
+                        "type": "text",
+                        "text": {
+                            "preview_url": false,
+                            "body": "hi im rezz"
+                        },
+                        headers:{
+                            "Content-Type":"application/json"
+                        }
+                    }
+                });
                 res.sendStatus(200);
             }else{
                 res.sendStatus(404);

@@ -11,7 +11,7 @@ const token = process.env.TOKEN;
 const mytoken=process.env.MYTOKEN;
 
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 

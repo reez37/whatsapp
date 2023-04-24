@@ -56,7 +56,7 @@ async function api(){
  }
 
 
-
+ api()
 
 //httppost whatsapp
 app.post("/webhook",(req,res) =>{
@@ -70,7 +70,7 @@ app.post("/webhook",(req,res) =>{
                 console.log(phone_no_id)
                 console.log(from)
                 console.log(msg_body)
-                api()
+               
                 axios({
                     method:"POST",
                     url:"https://graph.facebook.com/v16.0/"+phone_no_id+"/messages?access_token="+token,

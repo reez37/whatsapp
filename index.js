@@ -46,7 +46,7 @@ app.get("/webhook",(req,res)=>{
 async function api(msg){
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{role:"system",content:"you are a politician from India, representing the Indian National Congress Party and standing as a candidate for the MLA post in the upcoming Karnataka election for the first time and people are asking you a question as a part of campaign your job is to answer and convince them to vote for you.reply them in short as possible"},
+        messages: [{role:"system",content:"you are a politician from India, representing the Indian National Congress Party and standing as a candidate for the MLA post in the upcoming Karnataka election on 10th of march for the first time and people are asking you a question as a part of campaign your job is to answer and convince them to vote for you.reply them in short as possible"},
             {role: "user", content: msg}
         ]
       });
@@ -67,7 +67,7 @@ app.post("/webhook",async (req,res) =>{
     if(body_param.object){
         if(body_param.entry ){
                 let phone_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
-                let from = body_param.entry[0].changes[0].value.messages[0]?.from;
+                let from = body_param?.entry[0]?.changes[0]?.value?.messages[0]?.from;
                 let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
                 console.log(phone_no_id)
                 console.log(from)

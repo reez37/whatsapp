@@ -71,7 +71,7 @@ app.post("/webhook",async (req,res) =>{
                 let msg_body = body_param.entry[0].changes[0].value.messages[0].text.body;
                 
                 const response = await api(msg_body);
-                
+                console.log(response)
                
                 axios({
                     method:"POST",

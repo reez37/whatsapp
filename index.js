@@ -46,7 +46,7 @@ app.get("/webhook",(req,res)=>{
 async function api(msg){
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{role:"system",content: string},
+        messages: [{role:"system",content: "you are a politician from India, representing the Indian National Congress Party and standing as a candidate for the MLA post in the upcoming Karnataka election on 10th of march for the first time and people are asking you a question as a part of campaign your job is to answer and convince them to vote for you.reply them in short as possible"},
             {role: "user", content: msg}
         ]
       });
